@@ -27,7 +27,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.set("views", __dirname + "/views");
+app.set("views", path.join(__dirname, "views"));
 // method override
 app.use(
 	methodOverride(function (req, res) {
