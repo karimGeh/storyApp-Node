@@ -27,6 +27,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.set("views", __dirname + "/views");
 // method override
 app.use(
 	methodOverride(function (req, res) {
@@ -93,7 +94,7 @@ app.use(function (req, res, next) {
 });
 
 // static folder
-app.use(express.static(path.join(__dirname, "views")));
+// app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
