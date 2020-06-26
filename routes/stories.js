@@ -24,7 +24,7 @@ router.post("/", ensureAuth, async (req, res) => {
 		await Story.create(req.body);
 		res.redirect("/dashboard");
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		res.render("error/500");
 	}
 });
@@ -42,7 +42,7 @@ router.get("/", ensureAuth, async (req, res) => {
 			stories,
 		});
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		return res.render("error/500");
 	}
 });

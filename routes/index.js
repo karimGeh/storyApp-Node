@@ -12,7 +12,6 @@ const Story = require("../models/Story");
 // ? @route GET /
 
 router.get("/", ensureGuest, (req, res) => {
-	console.log(req.isAuthenticated());
 	res.render("login", {
 		layout: "login",
 	});
@@ -24,13 +23,13 @@ router.get("/", ensureGuest, (req, res) => {
 router.get("/dashboard", ensureAuth, async (req, res) => {
 	try {
 		const stories = await Story.find({ user: req.user.id }).lean();
-		console.log(stories);
+
 		res.render("dashboard", {
 			name: req.user.firstName,
 			stories,
 		});
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		res.render("error/500");
 	}
 });
