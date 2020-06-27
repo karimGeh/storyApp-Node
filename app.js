@@ -71,6 +71,8 @@ app.engine(
 		},
 		defaultLayout: "main",
 		extname: ".hbs",
+		layoutsDir: "./views/layouts",
+		partialsDir: ["./views/partials"],
 	}),
 );
 
