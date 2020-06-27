@@ -30,7 +30,7 @@ app.use(express.json());
 
 // app.use(express.static(__dirname));
 
-app.use(express.static(path.join(__dirname, "app/app")));
+// app.use(express.static(path.join(__dirname, "app/app")));
 // method override
 app.use(
 	methodOverride(function (req, res) {
@@ -73,6 +73,7 @@ app.engine(
 		extname: ".hbs",
 	}),
 );
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", ".hbs");
 
 // Sessions
