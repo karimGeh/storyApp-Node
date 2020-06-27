@@ -27,6 +27,8 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.use(express.static(__dirname));
+
 // method override
 app.use(
 	methodOverride(function (req, res) {
@@ -70,7 +72,6 @@ app.engine(
 	}),
 );
 app.set("view engine", ".hbs");
-app.set("views", path.join(__dirname, "views"));
 
 // Sessions
 app.use(
