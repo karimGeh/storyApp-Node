@@ -29,7 +29,7 @@ app.use(express.json());
 
 app.use(express.static(__dirname));
 
-app.use(express.static(path.join(__dirname, "..")));
+// app.use(express.static(path.join(__dirname, "..")));
 // method override
 app.use(
 	methodOverride(function (req, res) {
@@ -105,7 +105,7 @@ app.use("/stories", require("./routes/stories"));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(
-	PORT,
-	console.log(`server running in production mode on port ${PORT}`),
-);
+app.listen(PORT, () => {
+	console.log(`server running in production mode on port ${PORT}`);
+	console.log(path.join(__dirname, "views"));
+});
