@@ -73,7 +73,7 @@ app.engine(
 		extname: ".hbs",
 	}),
 );
-app.set("views", path.join(__dirname, "views"));
+
 app.set("view engine", ".hbs");
 
 // Sessions
@@ -98,7 +98,7 @@ app.use(function (req, res, next) {
 });
 
 // static folder
-// app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/", require("./routes/index"));
@@ -114,16 +114,4 @@ app.listen(PORT, () => {
 	//passsing directoryPath and callback function
 	console.log(__dirname);
 	console.log("##################   this is Dir   #################");
-
-	fs.readdir(directoryPath, function (err, files) {
-		//handling error
-		if (err) {
-			return console.log("Unable to scan directory: " + err);
-		}
-		//listing all files using forEach
-		files.forEach(function (file) {
-			// Do whatever you want to do with the file
-			console.log(file);
-		});
-	});
 });
