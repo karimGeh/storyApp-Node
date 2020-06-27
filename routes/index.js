@@ -13,9 +13,7 @@ const Story = require("../models/Story");
 
 router.get("/", ensureGuest, (req, res) => {
 	try {
-		res.render("login", {
-			layout: "login",
-		});
+		res.render("login");
 	} catch (error) {
 		console.log(error);
 		res.render("error/500");
