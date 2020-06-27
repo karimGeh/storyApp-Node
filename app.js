@@ -69,9 +69,9 @@ app.engine(
 			editIcon,
 			select,
 		},
+		layoutsDir: "./views/layouts",
 		defaultLayout: "main",
 		extname: ".hbs",
-		layoutsDir: "./views/layouts",
 		partialsDir: ["./views/partials"],
 	}),
 );
@@ -107,7 +107,7 @@ app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
 app.use("/stories", require("./routes/stories"));
 
-const directoryPath = __dirname;
+const directoryPath = __dirname + "/views/layouts";
 
 const PORT = process.env.PORT || 5000;
 
@@ -116,4 +116,16 @@ app.listen(PORT, () => {
 	//passsing directoryPath and callback function
 	console.log(__dirname);
 	console.log("##################   this is Dir   #################");
+
+	fs.readdir(directoryPath, function (err, files) {
+		//handling error
+		if (err) {
+			return console.log("Unable to scan directory: " + err);
+		}
+		//listing all files using forEach
+		files.forEach(function (file) {
+			// Do whatever you want to do with the file
+			console.log(file);
+		});
+	});
 });
