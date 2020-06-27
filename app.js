@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
-const cors = require("cors");
+// const cors = require("cors");
 const methodOverride = require("method-override");
 const connectDB = require("./config/db");
 const passport = require("passport");
@@ -27,7 +27,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(express.static(__dirname));
+// app.use(express.static(__dirname));
 
 // method override
 app.use(
@@ -41,7 +41,7 @@ app.use(
 	}),
 );
 
-app.use(cors());
+// app.use(cors());
 
 // loging
 if (process.env.NODE_ENV === "development") {
