@@ -12,9 +12,14 @@ const Story = require("../models/Story");
 // ? @route GET /
 
 router.get("/", ensureGuest, (req, res) => {
-	res.render("login", {
-		layout: "login",
-	});
+	try {
+		res.render("login", {
+			layout: "login",
+		});
+	} catch (error) {
+		console.log(error);
+		res.render("error/500");
+	}
 });
 
 //? @desc Dashboard
